@@ -1,0 +1,93 @@
+﻿@page "/tickets/"
+@attribute [Authorize]
+
+@inject ITicketRepository _repo
+@inject IToastService _toastService
+
+<h3>Index</h3>
+<hr />
+<br />
+@if (Model == null)
+{
+    <LoadingMessage Message="Loading tickets" />
+}
+else
+{
+    <AuthorizeView Roles="Administrator">
+        <a href="/tickets/create" class="btn btn-primary">
+            <span class="oi oi-plus"></span>
+            Create New Book
+        </a>
+    </AuthorizeView>
+
+    <br />
+    <br />
+    <br />
+    @if (Model.Count < 1)
+    {
+        <LoadingMessage Message="There are no tickets in the data store.
+                        Click 'Create ticket' to Begin " />
+    }
+    else
+    {
+        <table class="table table-responsive">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Title</th>
+                    <th>Summary</th>
+                    <th>Time</th>
+                    <th>Customer</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var ticket in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="@string.Format("data:image/png;base64,{0}", ticket.File)" class="img-thumbnail" style="height:100px;width:100px" />
+                        </td>
+                        <td>@ticket.Title</td>
+                        <td>@ticket.Summary</td>
+                        <td>@string.Format("{0:C}", ticket.Time)</td>
+                        <td>
+                            @if (ticket.Customer == null)
+                            {
+                                <span class="text-muted">No customer</span>
+                            }
+                            else
+                            {
+                                <span>@ticket.Customer.Name @ticket.Customer.Description</span>
+                            }
+                        </td>
+                        <td>
+                            <a href="/books/view/@ticket.Id" class="btn btn-primary">
+                                <span class="oi oi-book"></span>
+                            </a>
+                            <AuthorizeView Roles="Administrator">
+                                <a href="/books/edit/@ticket.Id" class="btn btn-warning">
+                                    <span class="oi oi-pencil"></span>
+                                </a>
+                                <a href="/books/delete/@ticket.Id" class="btn btn-danger">
+                                    <span class="oi oi-delete"></span>
+                                </a>
+                            </AuthorizeView>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+
+
+@code {
+    private IList<Ticket> Model;
+
+    protected async override Task OnInitializedAsync()
+    {
+        Model = await _repo.Get(Endpoints.TicketEndpoint);
+    }
+}

@@ -1,0 +1,78 @@
+﻿@page "/customers/edit/{Id}"
+@attribute [Authorize(Roles = "Administrator")]
+@inject ICustomerRepository _repo
+@inject NavigationManager _navManager
+@inject IToastService _toastService
+<h3 class="card-title">Edit Customer</h3>
+<hr />
+<br />
+@if (!isSuccess)
+{
+    <ErrorMessage Message="Somewthing Went Wrong With the Operation" />
+}
+
+@if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
+{
+    <ErrorMessage Message="Invalid Selection. Please Try Again" />
+}
+else if (Model == null)
+{
+    <LoadingMessage Message="Loading customer For Edit" />
+}
+else
+{
+    <EditForm Model="Model" OnValidSubmit="EditCustomer">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="name">Name</label>
+            <InputText @bind-Value="Model.Name" class="form-control" id="name" />
+        </div>
+
+        <div class="form-group">
+            <label for="nip">NIP</label>
+            <InputText @bind-Value="Model.NIP" class="form-control" id="nip" />
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <InputTextArea @bind-Value="Model.Description" class="form-control" id="description" />
+        </div>
+        <button class="btn btn-primary" type="submit">
+            <span class="oi oi-pencil"></span>
+            Submit Changes
+        </button>
+        <button @onclick="BackToList" class="btn btn-outline-secondary">
+            <span class="oi oi-media-skip-backward"></span>
+            Back To List
+        </button>
+    </EditForm>
+}
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+
+    private Customer Model = new Customer();
+    private bool isSuccess = true;
+    protected override async Task OnInitializedAsync()
+    {
+        int id = Convert.ToInt32(Id);
+        Model = await _repo.Get(Endpoints.CustomerEndpoint, id);
+    }
+
+    private async Task EditCustomer()
+    {
+        isSuccess = await _repo.Update(Endpoints.CustomerEndpoint, Model, Model.Id);
+        if (isSuccess)
+        {
+            _toastService.ShowWarning("Customer Updated Successfully", "");
+            BackToList();
+        }
+    }
+
+    private void BackToList()
+    {
+        _navManager.NavigateTo("/customers/");
+    }
+}
