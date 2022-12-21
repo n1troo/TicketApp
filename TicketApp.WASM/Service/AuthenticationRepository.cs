@@ -15,9 +15,9 @@ namespace TicketApp_UI.WASM.Service;
 
 public class AuthenticationRepository : IAuthenticationRepository
 {
+    private readonly AuthenticationStateProvider _authenticationStateProvider;
     private readonly HttpClient _client;
     private readonly ILocalStorageService _localStorage;
-    private readonly AuthenticationStateProvider _authenticationStateProvider;
 
     public AuthenticationRepository(HttpClient client,
         ILocalStorageService localStorage,

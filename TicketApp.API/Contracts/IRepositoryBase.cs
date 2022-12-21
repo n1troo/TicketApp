@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace TicketApp_API.Contracts
+namespace TicketApp_API.Contracts;
+
+public interface IRepositoryBase<T> where T : class
 {
-    public interface IRepositoryBase<T> where T : class
-    {
-        Task<IList<T>> FindAll();
-        Task<T> FindById(int id);
-        Task<bool> isExists(int id);
-        Task<bool> Create(T entity);
-        Task<bool> Update(T entity);
-        Task<bool> Delete(T entity);
-        Task<bool> Save();
-    }
+    Task<IList<T>> FindAll();
+    Task<T> FindById(int id);
+    Task<bool> isExists(int id);
+    Task<bool> Create(T entity);
+    Task<bool> Update(T entity);
+    Task<bool> Delete(T entity);
+    Task<bool> Save();
 }

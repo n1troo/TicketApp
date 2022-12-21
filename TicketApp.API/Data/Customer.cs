@@ -7,7 +7,7 @@ namespace TicketApp_API.Data;
 public class Customer : BaseModel
 {
     public string Name { get; set; }
-    public string NIP {get;set;}
+    public string NIP { get; set; }
     public string Address { get; set; }
     public string City { get; set; }
 

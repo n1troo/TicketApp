@@ -1,6 +1,7 @@
 ﻿<h3>RedirectToLogin</h3>
 
 @code {
+
     [Inject]
     protected NavigationManager NavigationManager { get; set; }
 
@@ -8,4 +9,5 @@
     {
         NavigationManager.NavigateTo("login");
     }
+
 }

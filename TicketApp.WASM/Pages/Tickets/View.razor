@@ -5,19 +5,18 @@
 
 
 <h3>View Details</h3>
-<hr />
-<br />
+<hr/>
+<br/>
 @if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
 {
-    <ErrorMessage Message="Invalid Selection. Please Try Again" />
+    <ErrorMessage Message="Invalid Selection. Please Try Again"/>
 }
 else if (Model == null)
 {
-    <LoadingMessage Message="Loading Details" />
+    <LoadingMessage Message="Loading Details"/>
 }
 else
 {
-
     <div class="row">
         <div class="col-6">
             <table class="table table-responsive">
@@ -64,7 +63,7 @@ else
             </table>
         </div>
         <div class="col-4">
-            <img src="@string.Format("data:image/png;base64,{0}", Model.File)" style="height:300px; width:300px" />
+            <img src="@string.Format("data:image/png;base64,{0}", Model.File)" style="height:300px; width:300px"/>
             <h3 class="text-center text-info">@string.Format("{0:C}", Model.Time)</h3>
         </div>
     </div>
@@ -84,17 +83,17 @@ else
 </button>
 
 @code {
+
     [Parameter]
     public string Id { get; set; }
 
-    private Ticket Model = new Ticket();
+    private Ticket Model = new();
 
     protected override async Task OnInitializedAsync()
     {
-        int id = Convert.ToInt32(Id);
+        var id = Convert.ToInt32(Id);
         Model = await _repo.Get(Endpoints.TicketEndpoint, id);
-        _toastService.ShowInfo($"Now Viewing {Model.Title}", "");
-
+        _toastService.ShowInfo($"Now Viewing {Model.Title}");
     }
 
     private void BackToList()

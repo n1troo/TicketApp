@@ -7,27 +7,27 @@
 @inject IToastService _toastService
 
 <h3>Create Ticket</h3>
-<hr />
-<br />
+<hr/>
+<br/>
 @if (!isSuccess)
 {
-    <ErrorMessage Message="Something Went Wrong With the Operation" />
+    <ErrorMessage Message="Something Went Wrong With the Operation"/>
 }
 
 <EditForm Model="Model" OnValidSubmit="HandleCreate">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
     <div class="form-group">
         <label for="title">Ticket Title</label>
-        <InputText @bind-Value="Model.Title" class="form-control" id="title" />
+        <InputText @bind-Value="Model.Title" class="form-control" id="title"/>
     </div>
     <div class="form-group">
         <label for="summary">Summary</label>
-        <InputText @bind-Value="Model.Summary" class="form-control" id="summary" />
+        <InputText @bind-Value="Model.Summary" class="form-control" id="summary"/>
     </div>
     <div class="form-group">
         <label for="time">Time</label>
-        <InputNumber @bind-Value="Model.Time" class="form-control" id="time" />
+        <InputNumber @bind-Value="Model.Time" class="form-control" id="time"/>
     </div>
     <div class="form-group">
         <label for="author">Customer</label>
@@ -44,18 +44,18 @@
     </div>
     <div class="form-group">
         <label for="contact">ContactPerson</label>
-        <InputTextArea @bind-Value="Model.ContactPerson" class="form-control" id="contact" />
+        <InputTextArea @bind-Value="Model.ContactPerson" class="form-control" id="contact"/>
     </div>
     <div class="form-group">
         <label for="customerlogo">Customer logo</label>
-        <InputFile OnChange="HandleFileSelection" />
+        <InputFile OnChange="HandleFileSelection"/>
         @if (isInvalidFileType)
         {
-            <ErrorMessage Message="Please remove the invalid file type and select as new image, or leave this field blank" />
+            <ErrorMessage Message="Please remove the invalid file type and select as new image, or leave this field blank"/>
         }
         @if (!string.IsNullOrWhiteSpace(imageDataURL))
         {
-            <img src="@imageDataURL" style="height:100px;width:100px" />
+            <img src="@imageDataURL" style="height:100px;width:100px"/>
         }
     </div>
     <button class="btn btn-primary" type="submit">
@@ -69,11 +69,11 @@
 </EditForm>
 
 @code {
-    private Ticket Model = new Ticket();
+    private readonly Ticket Model = new();
     private IList<Customer> Customers;
     private IBrowserFile file;
     private bool isSuccess = true;
-    private bool isInvalidFileType = false;
+    private bool isInvalidFileType;
     private string imageDataURL;
     private Stream msFile;
 
@@ -101,7 +101,7 @@
             isSuccess = await _repo.Create(Endpoints.TicketEndpoint, Model);
             if (isSuccess)
             {
-                _toastService.ShowSuccess("Ticket Created Successfully", "");
+                _toastService.ShowSuccess("Ticket Created Successfully");
                 BackToList();
             }
         }
@@ -118,7 +118,7 @@
                 msFile = file.OpenReadStream();
 
                 var resizedImageFile = await file.RequestImageFileAsync("image/png",
-            100, 100);
+                    100, 100);
 
                 var buffer = new byte[resizedImageFile.Size];
                 await resizedImageFile.OpenReadStream().ReadAsync(buffer);
@@ -144,4 +144,5 @@
     {
         _navManager.NavigateTo("/tickets/");
     }
+
 }

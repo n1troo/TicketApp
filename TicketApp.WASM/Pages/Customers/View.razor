@@ -4,15 +4,15 @@
 @inject IToastService _toastService
 
 <h3 class="card-title">View customer Details</h3>
-<hr />
-<br />
+<hr/>
+<br/>
 @if (int.Parse(Id) < 1 || string.IsNullOrWhiteSpace(Id))
 {
-    <ErrorMessage Message="Invalid Selection. Please Try Again" />
+    <ErrorMessage Message="Invalid Selection. Please Try Again"/>
 }
 else if (Model == null)
 {
-    <LoadingMessage Message="Loading customer Details" />
+    <LoadingMessage Message="Loading customer Details"/>
 }
 else
 {
@@ -31,7 +31,7 @@ else
                 <td>@Model.NIP</td>
             </tr>
         </table>
-        <br />
+        <br/>
         @if (Model.Ticketks == null || Model.Ticketks.Count < 1)
         {
             <div class="alert alert-dismissible alert-secondary">
@@ -55,7 +55,7 @@ else
 
     </div>
 }
-<br />
+<br/>
 
 
 <button @onclick="GoToEdit" class="btn btn-outline-warning">
@@ -72,16 +72,17 @@ else
 </button>
 
 @code {
+
     [Parameter]
     public string Id { get; set; }
 
-    private Customer Model = new Customer();
+    private Customer Model = new();
 
     protected override async Task OnInitializedAsync()
     {
-        int id = Convert.ToInt32(Id);
+        var id = Convert.ToInt32(Id);
         Model = await _repo.Get(Endpoints.CustomerEndpoint, id);
-        _toastService.ShowInfo($"Now Viewing {Model.Name} {Model.Description}", "");
+        _toastService.ShowInfo($"Now Viewing {Model.Name} {Model.Description}");
     }
 
     private void BackToList()

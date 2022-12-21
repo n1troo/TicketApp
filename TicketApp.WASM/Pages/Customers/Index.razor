@@ -3,65 +3,70 @@
 @inject ICustomerRepository _repo
 @*@inject HttpClient _client*@
 <h3 class="card-title">Index</h3>
-<hr />
-<br />
+<hr/>
+<br/>
 @if (Model == null)
 {
-    <LoadingMessage Message="Loading cusmoter" />
+    <LoadingMessage Message="Loading cusmoter"/>
 }
 else
 {
-<AuthorizeView Roles="Administrator">
-    <a href="/customers/create" class="btn btn-primary">
-        <span class="oi oi-plus"></span>
-        Create New
-    </a>
-    <br />
-</AuthorizeView>
+    <AuthorizeView Roles="Administrator">
+        <a href="/customers/create" class="btn btn-primary">
+            <span class="oi oi-plus"></span>
+            Create New
+        </a>
+        <br/>
+    </AuthorizeView>
     @if (Model.Count < 1)
     {
         <LoadingMessage Message="There are no customer in the data store.
-                        Click 'Create customer' to Begin " />
-    }
-    else
-    {
+                        Click 'Create customer' to Begin "/>
+        }
+        else
+        {
         <table class="table table-responsive">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Descriptio</th>
-                    <th>NIP</th>
-                </tr>
+            <tr>
+                <th>Name</th>
+                <th>Descriptio</th>
+                <th>NIP</th>
+            </tr>
             </thead>
             <tbody>
-                @foreach (var customer in Model)
-                {
-                    <tr>
-                        <td>@customer.Name</td>
-                        <td>@customer.Description</td>
-                        <td>
-                            <a href="/customers/view/@customer.Id" class="btn btn-primary">
-                                <span class="oi oi-book"></span></a>
-                            <AuthorizeView Roles="Administrator">
-                                <a href="/customers/edit/@customer.Id" class="btn btn-warning">
-                                    <span class="oi oi-pencil"></span></a>
-                                <a href="/customers/delete/@customer.Id" class="btn btn-danger">
-                                    <span class="oi oi-delete"></span></a>
-                            </AuthorizeView>
-                        </td>
-                    </tr>
-                }
+            @foreach (var customer in Model)
+            {
+                <tr>
+                    <td>@customer.Name</td>
+                    <td>@customer.Description</td>
+                    <td>
+                        <a href="/customers/view/@customer.Id" class="btn btn-primary">
+                            <span class="oi oi-book"></span>
+                        </a>
+                        <AuthorizeView Roles="Administrator">
+                            <a href="/customers/edit/@customer.Id" class="btn btn-warning">
+                                <span class="oi oi-pencil"></span>
+                            </a>
+                            <a href="/customers/delete/@customer.Id" class="btn btn-danger">
+                                <span class="oi oi-delete"></span>
+                            </a>
+                        </AuthorizeView>
+                    </td>
+                </tr>
+            }
             </tbody>
         </table>
-    }
-}
+        }
+        }
 
-@code {
-    private IList<Customer> Model;
+        @code {
+            private IList<Customer> Model;
 
-    protected async override Task OnInitializedAsync()
-    {
-        Model = await _repo.Get(Endpoints.CustomerEndpoint);
-        //Model = await _client.GetFromJsonAsync<IList<Customer>>(Endpoints.CustomerEndpoint);
-    }
-}
+            protected override async Task OnInitializedAsync()
+            {
+                Model = await _repo.Get(Endpoints.CustomerEndpoint);
+            //Model = await _client.GetFromJsonAsync<IList<Customer>>(Endpoints.CustomerEndpoint);
+            }
+
+        }
+

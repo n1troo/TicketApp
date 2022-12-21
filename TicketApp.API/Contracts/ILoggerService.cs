@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿namespace TicketApp_API.Contracts;
 
-namespace TicketApp_API.Contracts
+public interface ILoggerService
 {
-    public interface ILoggerService
-    {
-        void LogInfo(string message);
-        void LogWarn(string message);
-        void LogDebug(string message);
-        void LogError(string message);
-    }
+    void LogInfo(string message);
+    void LogWarn(string message);
+    void LogDebug(string message);
+    void LogError(string message);
 }
