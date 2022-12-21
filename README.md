@@ -1,1 +1,1 @@
-BookStore API and Blazor Application
+Ticket API and Blazor Application
