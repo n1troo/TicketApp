@@ -11,6 +11,5 @@ public class TicketUpdateDTO
     [Required] public double? Time { get; set; }
 
     public string Image { get; set; }
-
     public string File { get; set; }
 }
