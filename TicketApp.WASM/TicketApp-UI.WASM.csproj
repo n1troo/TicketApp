@@ -1,25 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
     <PropertyGroup>
-        <TargetFramework>net5.0</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <LangVersion>default</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Blazored.LocalStorage" Version="3.0.0"/>
-        <PackageReference Include="Blazored.Toast" Version="3.1.2"/>
-        <PackageReference Include="BlazorInputFile" Version="0.2.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0"/>
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all"/>
-        <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0"/>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0"/>
-        <PackageReference Include="System.Net.Http.Json" Version="5.0.0"/>
+        <PackageReference Include="Blazored.LocalStorage" Version="3.0.0" />
+        <PackageReference Include="Blazored.Toast" Version="3.2.2" />
+        <PackageReference Include="BlazorInputFile" Version="0.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="5.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="5.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+        <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js"/>
+        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
     </ItemGroup>
 
     <ItemGroup>
@@ -38,141 +38,141 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Customers\Create.razor"/>
+        <Watch Remove="Pages\Customers\Create.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Customers\Create.razor"/>
+        <UpToDateCheckInput Remove="Pages\Customers\Create.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="Pages\Customers\Create.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Customers\Delete.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Customers\Edit.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Customers\Index.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Customers\View.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Tickets\Create.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Tickets\Edit.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Tickets\Index.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Tickets\View.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Error.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Users\Login.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Users\Logout.razor"/>
-        <_ContentIncludedByDefault Remove="Pages\Users\Register.razor"/>
-        <_ContentIncludedByDefault Remove="Shared\ErrorMessage.razor"/>
-        <_ContentIncludedByDefault Remove="Shared\LoadingMessage.razor"/>
+        <_ContentIncludedByDefault Remove="Pages\Customers\Create.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Customers\Delete.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Customers\Edit.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Customers\Index.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Customers\View.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Tickets\Create.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Tickets\Edit.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Tickets\Index.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Tickets\View.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Error.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Users\Login.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Users\Logout.razor" />
+        <_ContentIncludedByDefault Remove="Pages\Users\Register.razor" />
+        <_ContentIncludedByDefault Remove="Shared\ErrorMessage.razor" />
+        <_ContentIncludedByDefault Remove="Shared\LoadingMessage.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Customers\Delete.razor"/>
+        <Watch Remove="Pages\Customers\Delete.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Customers\Delete.razor"/>
+        <UpToDateCheckInput Remove="Pages\Customers\Delete.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Customers\Edit.razor"/>
+        <Watch Remove="Pages\Customers\Edit.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Customers\Edit.razor"/>
+        <UpToDateCheckInput Remove="Pages\Customers\Edit.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Customers\Index.razor"/>
+        <Watch Remove="Pages\Customers\Index.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Customers\Index.razor"/>
+        <UpToDateCheckInput Remove="Pages\Customers\Index.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Customers\View.razor"/>
+        <Watch Remove="Pages\Customers\View.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Customers\View.razor"/>
+        <UpToDateCheckInput Remove="Pages\Customers\View.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Tickets\Create.razor"/>
+        <Watch Remove="Pages\Tickets\Create.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Tickets\Create.razor"/>
+        <UpToDateCheckInput Remove="Pages\Tickets\Create.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Tickets\Edit.razor"/>
+        <Watch Remove="Pages\Tickets\Edit.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Tickets\Edit.razor"/>
+        <UpToDateCheckInput Remove="Pages\Tickets\Edit.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Tickets\Index.razor"/>
+        <Watch Remove="Pages\Tickets\Index.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Tickets\Index.razor"/>
+        <UpToDateCheckInput Remove="Pages\Tickets\Index.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Tickets\View.razor"/>
+        <Watch Remove="Pages\Tickets\View.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Tickets\View.razor"/>
+        <UpToDateCheckInput Remove="Pages\Tickets\View.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Users\Login.razor"/>
+        <Watch Remove="Pages\Users\Login.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Users\Login.razor"/>
+        <UpToDateCheckInput Remove="Pages\Users\Login.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Users\Logout.razor"/>
+        <Watch Remove="Pages\Users\Logout.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Users\Logout.razor"/>
+        <UpToDateCheckInput Remove="Pages\Users\Logout.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Users\Register.razor"/>
+        <Watch Remove="Pages\Users\Register.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Users\Register.razor"/>
+        <UpToDateCheckInput Remove="Pages\Users\Register.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Pages\Error.razor"/>
+        <Watch Remove="Pages\Error.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Pages\Error.razor"/>
+        <UpToDateCheckInput Remove="Pages\Error.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Shared\ErrorMessage.razor"/>
+        <Watch Remove="Shared\ErrorMessage.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Shared\ErrorMessage.razor"/>
+        <UpToDateCheckInput Remove="Shared\ErrorMessage.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <Watch Remove="Shared\LoadingMessage.razor"/>
+        <Watch Remove="Shared\LoadingMessage.razor" />
     </ItemGroup>
 
     <ItemGroup>
-        <UpToDateCheckInput Remove="Shared\LoadingMessage.razor"/>
+        <UpToDateCheckInput Remove="Shared\LoadingMessage.razor" />
     </ItemGroup>
 
 </Project>
