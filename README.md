@@ -1,1 +1,1 @@
-# BookStore API and Blazor Application
+BookStore API and Blazor Application
